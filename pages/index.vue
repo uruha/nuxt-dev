@@ -3,10 +3,10 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        Hello Vue.js
+        {{title}}
       </h1>
       <h2 class="subtitle">
-        Hello Nuxt.js
+        This project name is {{title}}
       </h2>
       <div class="links">
         <a
@@ -26,6 +26,14 @@
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+  data () {
+    return { title: 'default title' }
+  },
+  asyncData (ctx) {
+    console.log(ctx);
+    
+    return { title: 'Hello nuxt.js' }
+  },
   components: {
     AppLogo
   }
