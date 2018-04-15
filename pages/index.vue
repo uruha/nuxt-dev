@@ -8,6 +8,26 @@
       <h2 class="subtitle">
         This project name is {{title}}
       </h2>
+      <div class="counter">
+      <ul>
+          <li>
+              Counter info: {{$store.state.counter}}
+          </li>
+          <li>
+            <button @click="increment">
+              Increment
+            </button>
+          </li>
+          <li>
+            <button @click="decrement">
+              Decrement
+            </button>
+          </li>
+          <li>
+              <nuxt-link to="/count">Go Counter only page.</nuxt-link>
+          </li>
+      </ul>
+      </div>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -24,8 +44,23 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import { mapState } from 'vuex'
 
 export default {
+  // fetch({ store }) {
+  //   store.commit('increment')
+  // },
+  computed: mapState([
+    'counter'
+  ]),
+  methods: {
+    increment() {
+      this.$store.commit('increment')
+    },
+    decrement() {
+      this.$store.commit('decrement')
+    }
+  },
   data () {
     return { title: 'default title' }
   },
