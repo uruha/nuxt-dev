@@ -20,3 +20,12 @@
       </ul>
   </div>
 </template>
+
+<script>
+  export default {
+      transition: {
+          name: 'count',
+          mode: 'out-in'
+      }
+  }
+</script>
