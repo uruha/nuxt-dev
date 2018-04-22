@@ -47,9 +47,10 @@ import AppLogo from '~/components/AppLogo.vue'
 import { mapState } from 'vuex'
 
 export default {
-  // fetch({ store }) {
-  //   store.commit('increment')
-  // },
+  fetch({ store }) {
+    console.log('called fatch');
+    console.log(`fetch: ${store.state.counter}`)
+  },
   computed: mapState([
     'counter'
   ]),
@@ -62,11 +63,12 @@ export default {
     }
   },
   data () {
+    console.log('called data')
     return { title: 'default title' }
   },
-  asyncData (ctx) {
-    console.log(ctx);
-    
+  asyncData ({ store }) {
+    console.log('called asyncData')
+    console.log(`asyncData: ${store.state.counter}`)
     return { title: 'Hello nuxt.js' }
   },
   components: {
